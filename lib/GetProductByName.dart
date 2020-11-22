@@ -10,7 +10,7 @@ class GetByName extends StatefulWidget {
 }
 
 class _GetByNameState extends State<GetByName> {
-  final webScraper = WebScraper('https://fr.openfoodfacts.org');
+  final webScraper = WebScraper('https://world.openfoodfacts.org');
   bool loading = false;
   List<Map<String, dynamic>> productNames = [];
   List<Map<String, dynamic>> productImage = [];
@@ -25,7 +25,7 @@ class _GetByNameState extends State<GetByName> {
       loading = true;
     });
     if (await webScraper.loadWebPage(
-        '/cgi/search.pl?action=process&search_terms=$product&sort_by=unique_scans_n&page_size=50$index')) {
+        '/cgi/search.pl?action=process&search_terms=$product&sort_by=unique_scans_n&page_size=50$index&origins=france')) {
       setState(() {
         // getElement takes the address of html tag/element and attributes you want to scrap from website
         // it will return the attributes in the same order passed
